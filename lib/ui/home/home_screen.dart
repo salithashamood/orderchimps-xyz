@@ -43,7 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
               _fetchMore = false;
             }
             if (state is HomeLocationCannotFetch) {
-              Navigator.pop(context);
               const snackBar = SnackBar(
                 content: Text(
                   'We have a problem',
@@ -54,18 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is HomeLocationFetched) {
-              Navigator.pop(context);
               SnackBar snackBar = SnackBar(
                 content: Text(
                   'Your location is ${state.country}',
                   style: const TextStyle(color: Colors.white),
                 ),
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.green,
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is HomeLocationPermitionDenieded) {
-              Navigator.pop(context);
               const snackBar = SnackBar(
                 content: Text(
                   'Location permission denieded',
