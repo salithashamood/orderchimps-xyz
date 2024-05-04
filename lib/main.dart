@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xyz/core/service_locator.dart';
 import 'package:xyz/theme/theme_data.dart';
-import 'package:xyz/ui/sign_in/sign_in_screen.dart';
+import 'package:xyz/ui/navigation/cubit/navigation_cubit.dart';
+import 'package:xyz/ui/navigation/navigation_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
   runApp(const MyApp());
 }
 
@@ -12,10 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Eridanus',
-      theme: lightTheme,
-      home: const SignInScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Eridanus',
+        theme: lightTheme,
+        home: BlocProvider<NavigationCubit>(
+          create: (context) => serviceLocator<NavigationCubit>(),
+          child: const NavigationScreen(),
+        )
+        // home: const SignInScreen(),
+        );
   }
 }
