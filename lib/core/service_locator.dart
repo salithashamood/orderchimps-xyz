@@ -6,6 +6,7 @@ import 'package:xyz/domain/usecase/auth_usecase.dart';
 import 'package:xyz/ui/home/cubit/home_cubit.dart';
 import 'package:xyz/ui/navigation/cubit/navigation_cubit.dart';
 import 'package:xyz/ui/onboard/cubit/onboard_cubit.dart';
+import 'package:xyz/ui/profile/cubit/profile_cubit.dart';
 import 'package:xyz/ui/sign_in/cubit/sign_in_cubit.dart';
 
 final serviceLocator = GetIt.instance;
@@ -36,9 +37,9 @@ Future<void> setupLocator() async {
   );
 
   //profile cubit
-  // serviceLocator.registerFactory<ProfileCubit>(
-  //   () => ProfileCubit(serviceLocator<AuthUsecase>()),
-  // );
+  serviceLocator.registerFactory<ProfileCubit>(
+    () => ProfileCubit(),
+  );
   //Cubit
 
   //usecase
