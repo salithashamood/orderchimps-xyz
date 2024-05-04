@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:xyz/core/service_locator.dart';
 import 'package:xyz/theme/colors.dart';
+import 'package:xyz/ui/home/cubit/home_cubit.dart';
 import 'package:xyz/ui/home/home_screen.dart';
 import 'package:xyz/ui/navigation/cubit/navigation_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +14,10 @@ class NavigationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.read<NavigationCubit>();
     List<Widget> widgetList = [
-      HomeScreen(),
+      BlocProvider<HomeCubit>(
+        create: (context) => serviceLocator<HomeCubit>(),
+        child: const HomeScreen(),
+      ),
       Container(),
       Container(),
       Container(),

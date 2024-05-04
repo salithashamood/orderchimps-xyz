@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 class TextWithTitleContainer extends StatelessWidget {
   final String title;
   final String hintText;
+  final String errorText;
   final bool isPassword;
+  final TextEditingController controller;
   const TextWithTitleContainer(
       {super.key,
       required this.title,
       required this.hintText,
-      this.isPassword = false});
+      this.isPassword = false,
+      required this.errorText,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +26,14 @@ class TextWithTitleContainer extends StatelessWidget {
               ),
         ),
         TextFormField(
+          validator: (value) => value!.isEmpty ? errorText : null,
           style: Theme.of(context).textTheme.titleMedium,
-          // controller: controller,
+          controller: controller,
           obscureText: isPassword,
           decoration: InputDecoration(
               hintText: hintText,
               hintStyle: Theme.of(context).textTheme.titleMedium,
-              contentPadding: EdgeInsets.zero
-              // border: OutlineInputBorder(
-              //   borderRadius: BorderRadius.circular(12),
-              // ),
-              ),
+              contentPadding: EdgeInsets.zero),
         ),
       ],
     );
