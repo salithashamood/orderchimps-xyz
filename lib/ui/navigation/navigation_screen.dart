@@ -3,6 +3,7 @@ import 'package:xyz/theme/colors.dart';
 import 'package:xyz/ui/home/home_screen.dart';
 import 'package:xyz/ui/navigation/cubit/navigation_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xyz/ui/profile/profile_screen.dart';
 
 class NavigationScreen extends StatelessWidget {
   const NavigationScreen({super.key});
@@ -15,7 +16,7 @@ class NavigationScreen extends StatelessWidget {
       Container(),
       Container(),
       Container(),
-      Container(),
+      ProfileScreen()
     ];
     return BlocBuilder<NavigationCubit, int>(
       builder: (context, state) {
