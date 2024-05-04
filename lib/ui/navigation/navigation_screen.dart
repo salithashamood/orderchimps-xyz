@@ -5,6 +5,7 @@ import 'package:xyz/ui/home/cubit/home_cubit.dart';
 import 'package:xyz/ui/home/home_screen.dart';
 import 'package:xyz/ui/navigation/cubit/navigation_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xyz/ui/profile/cubit/profile_cubit.dart';
 import 'package:xyz/ui/profile/profile_screen.dart';
 
 class NavigationScreen extends StatelessWidget {
@@ -21,7 +22,10 @@ class NavigationScreen extends StatelessWidget {
       Container(),
       Container(),
       Container(),
-      ProfileScreen()
+      BlocProvider<ProfileCubit>(
+        create: (context) => serviceLocator<ProfileCubit>(),
+        child: const ProfileScreen(),
+      ),
     ];
     return BlocBuilder<NavigationCubit, int>(
       builder: (context, state) {
